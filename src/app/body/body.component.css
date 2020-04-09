@@ -38,13 +38,16 @@ text{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     color: black;
+    background-color: #ffffff;
+    padding-right: 20px;
+
 }
 .form{
     border-radius: 25px;
     color: #ffffff;
-    background: #ffffff;
+    background: #e3b1b5;
     height: 300px;
-    opacity: 0.5;
+ 
 }
 
     .circle {
@@ -64,6 +67,14 @@ text{
           font-size: 25px;
           font-weight: bold;
           font-style: oblique;
+      }
+
+      .trait{
+          color: #ffffff;
+          background: #ffffff;
+          font-weight: bold;
+          font-size: 30px;
+
       }
 
 img {
