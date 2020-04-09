@@ -1,5 +1,6 @@
 
 .backimage{
+    opacity: 0.9 !important;
     background-image: url("../../assets/img1.jpeg");
  /* border-radius: 20px; */
     /* background-color:#ac1b27 ; */
@@ -16,6 +17,7 @@
     width: 100%;
     height: 100%;
     min-height: 620px;
+
     
     background-size: cover;
     background-color: lightcoral;
@@ -23,5 +25,33 @@
     /* outline-color: transparent !important;
   
     bottom: 100%; */
+    
 
 }
+
+    .circle {
+        float: left;
+        display: block;
+        background: #ffffff;
+        border-radius: 50%;
+        height: 15px;
+        width: 15px;
+        margin: 0;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      .text{
+          text-align: left;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font-size: 25px;
+          font-weight: bold;
+          font-style: oblique;
+      }
+
+img {
+    opacity: 0.5;
+  }
+  
+  img:hover {
+    opacity: 1.0;
+  }
