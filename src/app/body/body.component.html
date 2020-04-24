@@ -31,7 +31,9 @@
                         </div>
                         <input type="text" class="form-control rounded-pill" placeholder="tape a city" aria-label="Username" aria-describedby="addon-wrapping">
                       </div>
+                      <app-sidebar></app-sidebar>
                 </div>
+
                 <div class="col-md-4">
                      <br><br>
                     <form class="form text">
@@ -67,3 +69,22 @@
 </div>
 
 <app-footer></app-footer>
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Veuillez entrer le nom de la region</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control rounded-pill" placeholder="tape a city" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">voir resultat</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

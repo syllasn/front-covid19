@@ -7,6 +7,8 @@
 .backimage{
     opacity: 0.9 !important;
     background-image: url("../../assets/img1.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
  /* border-radius: 20px; */
     /* background-color:#ac1b27 ; */
     /* background: #ca656d; */
