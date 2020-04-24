@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import 'jquery';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -12,9 +12,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
   }
-  close(){
-    $('#exampleModal').modal('show');
-   
-  }
+ 
 
 }
