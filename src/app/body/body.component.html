@@ -1,48 +1,49 @@
 <app-menu></app-menu>
 <div class="container-fluid  ">
-    <div class="row  backimage">
-        <div class="col-md-12 text-white color ">
-            <br>
+  <div class="row  backimage">
+    <div class="col-md-12 text-white color ">
+      <br>
 
-            <div class="row ">
+      <div class="row ">
 
 
+        <figure class="circle">
+        </figure>
+
+
+        <div class="text">Sʼinformer sur les nombres de cas et les zones ou le virus est presente</div>
+
+        <figure class="circle">
+        </figure>
+
+
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+          <br><br>
+          <div class="input-group flex-nowrap ">
+            <div class="input-group-prepend ">
+              <span class="input-group-text rounded-pill" id="addon-wrapping">
                 <figure class="circle">
                 </figure>
-
-
-                <div class="text">Sʼinformer sur les nombres de cas et les zones ou le virus est presente</div>
-
-                <figure class="circle">
-                </figure>
-
-
+              </span>
             </div>
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                    <br><br>
-                    <div class="input-group flex-nowrap ">
-                        <div class="input-group-prepend ">
-                          <span class="input-group-text rounded-pill" id="addon-wrapping">
-                            <figure class="circle">
-                            </figure>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control rounded-pill" placeholder="tape a city" aria-label="Username" aria-describedby="addon-wrapping">
-                      </div>
-                      <app-sidebar></app-sidebar>
-                </div>
+            <input type="text" class="form-control rounded-pill" placeholder="tape a city" aria-label="Username"
+              aria-describedby="addon-wrapping">
+          </div>
+          <app-sidebar></app-sidebar>
+        </div>
 
-                <div class="col-md-7">
-                     <br><br>
-                     <div id="Graph" #Graph>
+        <div class="col-md-7">
+          <br><br>
+          <div id="Graph" #Graph>
 
-                     </div>
-                     <!-- <img class="img-fluid"  [src]="this.image"> -->
+          </div>
+          <!-- <img class="img-fluid"  [src]="this.image"> -->
 
 
-                     <!-- <div  id = "tester" class="row">
+          <!-- <div  id = "tester" class="row">
                       <div class="col-md-6 offset-md-3">
                           <script>
                               TESTER = document.getElementById('tester');
@@ -52,7 +53,7 @@
                           </script>
                       </div>
                     </div> -->
-                    <!-- <form class="form text">
+          <!-- <form class="form text">
                         <br>
                         <h2 class="text text-center text-danger"> 226 Cas declarés positiifs </h2>
                         <hr class="text-white trait">
@@ -66,17 +67,17 @@
                         <hr class="text-danger trait">
                         
                       </form> -->
-                      <br><br><br><br><br><br>
-                      <h1>Les mesures preventifs</h1>
-                </div>
-            
-
-
-            </div>
-
+          <br><br><br><br><br><br>
+          <h1>Les mesures preventifs</h1>
         </div>
 
+
+
+      </div>
+
     </div>
+
+  </div>
 
 
 
@@ -85,27 +86,29 @@
 </div>
 
 <app-footer></app-footer>
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Veuillez l'intervalla de temps d'études</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<div class="modal rounded-pill" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Veuillez l'intervalla de temps d'études</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="validationDefault01">Date Début</label>
+            <input type="date" class="form-control" id="validationDefault01" placeholder="entrez la date de début"
+              required>
+          </div>
+          <div class="col-md-6">
+            <label for="validationDefault02">Date Fin</label>
+            <input type="date" class="form-control" id="validationDefault02" placeholder="entrez la date de fin"
+              required>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="form-row">
-            <div class="col-md-6">
-              <label for="validationDefault01">Date Début</label>
-              <input type="date" class="form-control" id="validationDefault01" placeholder="entrez la date de début" required>
-            </div>
-            <div class="col-md-6">
-              <label for="validationDefault02">Date Fin</label>
-              <input type="date" class="form-control" id="validationDefault02" placeholder="entrez la date de fin" required>
-            </div>     
-           </div>
-           <br>
+        <br>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary">voir resultat</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -114,7 +117,7 @@
     </div>
   </div>
 
-<!-- <div class="col-md-4  modal" id="exampleModal">
+  <!-- <div class="col-md-4  modal" id="exampleModal">
   <form >
     <div class="form-row">
       <div class="col-md-4 mb-3">
