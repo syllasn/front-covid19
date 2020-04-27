@@ -86,6 +86,9 @@
 </div>
 
 <app-footer></app-footer>
+
+
+
 <div class="modal rounded-pill" id="exampleModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -100,23 +103,22 @@
           <div class="col-md-6">
             <label for="validationDefault01">Date Début</label>
             <input type="date" class="form-control" id="validationDefault01" placeholder="entrez la date de début"
-              required>
+              required [(ngModel)]="this.date.dateDebut" name="dateDebut">
           </div>
           <div class="col-md-6">
             <label for="validationDefault02">Date Fin</label>
             <input type="date" class="form-control" id="validationDefault02" placeholder="entrez la date de fin"
-              required>
+              required [(ngModel)]="this.date.dateFin" name="dateFin">
           </div>
         </div>
         <br>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">voir resultat</button>
+          <button type="button" class="btn btn-primary" (click) = "showGraph()">voir resultat</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
-
   <!-- <div class="col-md-4  modal" id="exampleModal">
   <form >
     <div class="form-row">

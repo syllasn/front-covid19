@@ -10,17 +10,33 @@ declare var Plotly: any;
 })
 export class BodyComponent implements OnInit {
   image;
+  url;
   @ViewChild("Graph", { static: true })
 private Graph: ElementRef; 
+typeDeCas:string;
+date ={
+  dateDebut:'',
+  dateFin:''
+
+}
+
+
 
   constructor(private covid:CovidserviceService  ) { }
 
   ngOnInit() {
     this.get_graph()
+
+    this.date={
+      dateDebut:'',
+      dateFin:''
+    };
+
   }
 
 
   get_graph(){
+  
    
     let plotData$ =this.covid.get_graph().subscribe(response => {
    console.log(response)
@@ -28,10 +44,7 @@ private Graph: ElementRef;
    this.plotGraph();
 
    plotData$.unsubscribe();
-
-
   
-   
 
   },
   error => {
@@ -40,6 +53,39 @@ private Graph: ElementRef;
 
 
   }
+  showGraph(){
+  this.typeDeCas = localStorage.getItem('typecas');
+  console.log("le type de cas ",this.typeDeCas)
+  console.log("date debut ",this.date.dateDebut)
+  console.log("date fin ",this.date.dateFin)
+  this.url = {
+    date_deb :this.date.dateDebut,
+    date_fin:this.date.dateFin,
+    option:this.typeDeCas
+  }
+  let plotData$=this.covid.get_graph_by_option(this.url).subscribe(response => {
+    console.log(response)
+    this.image = JSON.parse(response.data)
+    this.plotGraph();
+
+    plotData$.unsubscribe();
+   
+    // this.plotGraph();
+ 
+    // plotData$.unsubscribe();
+ 
+ 
+   
+    
+ 
+   },
+   error => {
+     console.log('error', error);
+   })
+ 
+
+}
+
 
   plotGraph(){
     console.log("la fonction plot graphe",this.image)

@@ -19,6 +19,12 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'  });
 
     return this.http.get(this.baseurl + '/graph', { headers: this.httpHeaders });
   }
+  get_graph_by_option(url): Observable<any> {
+    // this.url = url.replace(/^.*\\/, '');
 
+    console.log( this.baseurl + '/graph' + JSON.stringify(url) + '/'  , { headers: this.httpHeaders} );
+
+    return this.http.post<any>(this.baseurl + '/graph' , JSON.stringify(url)  , { headers: this.httpHeaders});
+  }
 
 }

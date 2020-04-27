@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  typeDecas:string;
 
   constructor() { }
 
   ngOnInit() {
   }
- 
+  getCaseConfirmes(){
+    this.typeDecas = 'Confirme'
+    localStorage.setItem('typecas' ,this.typeDecas);
+  }
 
 }
