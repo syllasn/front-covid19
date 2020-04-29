@@ -5,7 +5,10 @@ import { BodyComponent } from './body/body.component';
 
 const routes: Routes = [
  // { path: '', component: MenuComponent },
-  { path: '', component: BodyComponent},
+  { path: 'data', component: BodyComponent},
+  { path: 'some/',   redirectTo: '/data', pathMatch: 'full' },
+  { path: '',   redirectTo: '/data', pathMatch: 'full' }, // redirect to `first-component`
+
 ];
 
 @NgModule({

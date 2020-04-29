@@ -32,7 +32,165 @@
             <input type="text" class="form-control rounded-pill" placeholder="tape a city" aria-label="Username"
               aria-describedby="addon-wrapping">
           </div>
-          <app-sidebar></app-sidebar>
+          <!-- le side bar  -->
+          <nav class=" navbar navbar-expand-lg navbar-light vertical-menu">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="col-md-12 dashboard_form" id="navbarSupportedContent">
+        
+                <!--   
+              <br>
+                <a href="#"  data-toggle="collapse" href="#collapseExample"  class="active text-white"routerLink="/admin">Visualisation</a>
+                <a href="#" id="collapseExample" class="text-white collapse" routerLink="/categories">Categories</a>
+                <a href="#" class="text-white"  routerLink="/addarticles">Articles</a>
+                <a href="#" class="text-white" routerLink="/admin-client">Client</a>
+                <a href="#" class="text-white" routerLink="/commande-admin">Commande</a>
+                <a href="#" class="text-white" routerLink="/livraison">Livraison</a> -->
+                <br>
+                <p>
+                    <br>
+                    <a class=" active text-white btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample" (click)="showvisualisation()">
+                        Visualisation
+                    </a>
+                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Button with data-target
+                    </button> -->
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body" *ngIf= "this.showGraph">
+                        <!-- <button type="button" class="btn btn-outline-primary">Nationale</button>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal"
+                            class="btn btn-outline-secondary">Regionale</button> -->
+                        <!-- <button type="button" data-toggle="modal" data-target="#exampleModal"
+                            class="btn btn-outline-primary rounded" (click)="getCaseConfirmes()">Cas Confirmés</button>
+        
+                        <button type="button" data-toggle="modal" data-target="#exampleModal"
+                            class="btn btn-outline-success rounded">Cas Importés</button>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal"
+                            class="btn btn-outline-warning rounded">Cas Contacts</button>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger">Cas
+                            Communautaires</button> -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="validationDefault01" class="text-dark">Date Début</label>
+                                <input type="date" class="form-control" id="validationDefault01" placeholder=" date de début"
+                                    required [(ngModel)]="this.date.dateDebut" name="dateDebut">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationDefault02" class="text-dark">Date Fin</label>
+                                <input type="date" class="form-control" id="validationDefault02" placeholder="date de fin"
+                                    required [(ngModel)]="this.date.dateFin" name="dateFin" placeholder="date de fin">
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                                        [(ngModel)]="this.choice.confirmes" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch1">Confirmés</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2"
+                                        [(ngModel)]="this.choice.contact" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch2">Contacts</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch3"
+                                        [(ngModel)]="this.choice.communautaire" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch3">Communautaire</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch4"
+                                        [(ngModel)]="this.choice.importes" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch4">Importés</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch5"
+                                        [(ngModel)]="this.choice.recovered" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch5">Recovered</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch6"
+                                        [(ngModel)]="this.choice.dead" [value]="1">
+                                    <label class="custom-control-label text-dark" for="customSwitch6">Dead</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="button"    class="  btn btn-outline-secondary rounded" (click)="get_choice()"
+                            href="">Envoyer</button>
+        
+        
+                        <!-- [(ngModel)]="this.articles.available" [value]="1" -->
+                        <!-- <div class="custom-control custom-switch col-m-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label text-dark" for="customSwitch2">Importés</label>
+                              </div> -->
+        
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <br>
+                    <a class=" active text-white btn btn-primary" data-toggle="collapse" href="#collapseExample1" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Prevision
+                    </a>
+                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Button with data-target
+                    </button> -->
+                </p>
+                <div class="collapse" id="collapseExample1">
+                    <div class="card card-body">
+                        <button type="button" class="btn btn-outline-primary">Nationale</button>
+                        <button type="button" class="btn btn-outline-secondary">Regionale</button> </div>
+                </div>
+                <br>
+                <p>
+                    <br>
+                    <a class=" active text-white btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Comparaison avec d'autres pays
+                    </a>
+                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Button with data-target
+                    </button> -->
+                </p>
+                <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+                        <button type="button" class="btn btn-outline-primary">Nationale</button>
+                        <button type="button" class="btn btn-outline-secondary">Regionale</button> </div>
+                </div>
+        
+        
+        
+            </div>
+        </nav>
+          <!-- <app-sidebar></app-sidebar> -->
+          <!-- fin side bar -->
         </div>
 
         <div class="col-md-7">

@@ -1,4 +1,4 @@
-import { Component,ViewChild,ElementRef, OnInit } from '@angular/core';
+import { Component,ViewChild,ElementRef, OnInit, Input } from '@angular/core';
 import { CovidserviceService } from '../covidservice.service';
 //import * as Plotly from 'plotly.js';
 
@@ -9,23 +9,63 @@ declare var Plotly: any;
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  image;
-  url;
+  
   @ViewChild("Graph", { static: true })
-private Graph: ElementRef; 
-typeDeCas:string;
-date ={
-  dateDebut:'',
-  dateFin:''
+  private Graph: ElementRef; 
+ 
+  image;
+  choice = {
+    confirmes:'',
+    contact:'',
+    communautaire:'',
+    importes:'',
+    recovered:'',
+    dead:''
+  }
+  url={
+     date_deb:'',
+     date_fin:'',
+    option:{}
 
-}
+   }
+  date={
+    dateDebut:'',
+    dateFin:''
+  };
+  
+  showGraph =true
+
+// date ={
+//   dateDebut:'',
+//   dateFin:''
+
+// }
 
 
 
-  constructor(private covid:CovidserviceService  ) { }
+  constructor(private covid:CovidserviceService  ) { 
+    // this.image=localStorage.getItem('data')
+    // console.log("a la body",this.image)
+    // this.image = JSON.parse(this.image)
+  }
 
   ngOnInit() {
-    this.get_graph()
+    this.choice = {
+      confirmes:'',
+      contact:'',
+      communautaire:'',
+      importes:'',
+      recovered:'',
+      dead:''
+    }
+    this.date={
+      dateDebut:'',
+      dateFin:''
+    };
+    // this.image=localStorage.getItem('data')
+    // console.log("a la body",this.image)
+    // this.image = JSON.parse(this.image)
+    // this.get_graph()
 
     this.date={
       dateDebut:'',
@@ -35,57 +75,37 @@ date ={
   }
 
 
-  get_graph(){
-  
-   
-    let plotData$ =this.covid.get_graph().subscribe(response => {
-   console.log(response)
-   this.image = JSON.parse(response.data)
-   this.plotGraph();
+get_choice(){
+    console.log("les choix",this.choice)
+    console.log("les choix",this.date)
+    this.url = {
+      date_deb:this.date.dateDebut,
+      date_fin:this.date.dateFin,
+      option:this.choice
+    }
+    console.log("les choix",this.url)
+    let plotData$= this.covid.get_graph_by_option(this.url).subscribe(response => {
+      this.image = response.data
+      console.log(response)
+      this.image = JSON.parse(response.data)
+      // localStorage.setItem('data' ,JSON.stringify(response.data));
+      this.plotGraph();
+      plotData$.unsubscribe();
+     
 
-   plotData$.unsubscribe();
-  
+     // this.router.navigate(['./data'], { relativeTo: this.route })
+      console.log('arive ou pas')
+      this.showGraph=false
 
-  },
-  error => {
-    console.log('error', error);
-  })
-
+    },
+    error => {
+      console.log('error', error);
+    })
 
   }
-  showGraph(){
-  this.typeDeCas = localStorage.getItem('typecas');
-  console.log("le type de cas ",this.typeDeCas)
-  console.log("date debut ",this.date.dateDebut)
-  console.log("date fin ",this.date.dateFin)
-  this.url = {
-    date_deb :this.date.dateDebut,
-    date_fin:this.date.dateFin,
-    option:this.typeDeCas
+  showvisualisation(){
+    this.showGraph = true
   }
-  let plotData$=this.covid.get_graph_by_option(this.url).subscribe(response => {
-    console.log(response)
-    this.image = JSON.parse(response.data)
-    this.plotGraph();
-
-    plotData$.unsubscribe();
-   
-    // this.plotGraph();
- 
-    // plotData$.unsubscribe();
- 
- 
-   
-    
- 
-   },
-   error => {
-     console.log('error', error);
-   })
- 
-
-}
-
 
   plotGraph(){
     console.log("la fonction plot graphe",this.image)
@@ -124,11 +144,68 @@ date ={
     scrollZoom: true
     });
     }
+  }
+
+
+
+
+  // get_graph(){
+  
+   
+  //    this.covid.get_graph().subscribe(response => {
+  //  console.log(response)
+  //  this.image = JSON.parse(response.data)
+  //  this.plotGraph();
+
+  
+  
+
+  // },
+  // error => {
+  //   console.log('error', error);
+  // })
+
+
+  // }
+  // showGraph(){
+  // this.typeDeCas = localStorage.getItem('typecas');
+  // console.log("le type de cas ",this.typeDeCas)
+  // console.log("date debut ",this.date.dateDebut)
+  // console.log("date fin ",this.date.dateFin)
+  // this.url = {
+  //   date_deb :this.date.dateDebut,
+  //   date_fin:this.date.dateFin,
+  //   option:this.typeDeCas
+  // }
+  // let plotData$=this.covid.get_graph_by_option(this.url).subscribe(response => {
+  //   console.log(response)
+  //   this.image = JSON.parse(response.data)
+  //   this.plotGraph();
+
+  //   plotData$.unsubscribe();
+   
+    // this.plotGraph();
+ 
+    // plotData$.unsubscribe();
+ 
+ 
+   
+    
+ 
+  //  },
+  //  error => {
+  //    console.log('error', error);
+  //  })
+ 
+
+// }
+
+
 
   // plotGraph(){
   //   this.Graph = Plotly.plot('tester',{{this.image | safe}},{})
   //   };
-}
+
 
 
 

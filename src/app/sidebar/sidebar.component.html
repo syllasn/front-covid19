@@ -26,11 +26,11 @@
             </button> -->
         </p>
         <div class="collapse" id="collapseExample">
-            <div class="card row  card-body">
+            <div class="card card-body">
                 <!-- <button type="button" class="btn btn-outline-primary">Nationale</button>
                 <button type="button" data-toggle="modal" data-target="#exampleModal"
                     class="btn btn-outline-secondary">Regionale</button> -->
-                <button type="button" data-toggle="modal" data-target="#exampleModal"
+                <!-- <button type="button" data-toggle="modal" data-target="#exampleModal"
                     class="btn btn-outline-primary rounded" (click)="getCaseConfirmes()">Cas Confirmés</button>
 
                 <button type="button" data-toggle="modal" data-target="#exampleModal"
@@ -38,7 +38,83 @@
                 <button type="button" data-toggle="modal" data-target="#exampleModal"
                     class="btn btn-outline-warning rounded">Cas Contacts</button>
                 <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger">Cas
-                    Communautaires</button>
+                    Communautaires</button> -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="validationDefault01" class="text-dark">Date Début</label>
+                        <input type="date" class="form-control" id="validationDefault01" placeholder=" date de début"
+                            required [(ngModel)]="this.date.dateDebut" name="dateDebut">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationDefault02" class="text-dark">Date Fin</label>
+                        <input type="date" class="form-control" id="validationDefault02" placeholder="date de fin"
+                            required [(ngModel)]="this.date.dateFin" name="dateFin" placeholder="date de fin">
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                                [(ngModel)]="this.choice.confirmes" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch1">Confirmés</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2"
+                                [(ngModel)]="this.choice.contact" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch2">Contacts</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch3"
+                                [(ngModel)]="this.choice.communautaire" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch3">Communautaire</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch4"
+                                [(ngModel)]="this.choice.importes" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch4">Importés</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch5"
+                                [(ngModel)]="this.choice.recovered" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch5">Recovered</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch6"
+                                [(ngModel)]="this.choice.dead" [value]="1">
+                            <label class="custom-control-label text-dark" for="customSwitch6">Dead</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-outline-secondary rounded" (click)="get_choice()"
+                    href="">Envoyer</button>
+
+
+                <!-- [(ngModel)]="this.articles.available" [value]="1" -->
+                <!-- <div class="custom-control custom-switch col-m-3">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                        <label class="custom-control-label text-dark" for="customSwitch2">Importés</label>
+                      </div> -->
+
             </div>
         </div>
         <br>
@@ -78,4 +154,3 @@
 
     </div>
 </nav>
-
