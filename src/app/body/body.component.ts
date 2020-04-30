@@ -1,8 +1,10 @@
 import { Component,ViewChild,ElementRef, OnInit, Input } from '@angular/core';
 import { CovidserviceService } from '../covidservice.service';
+import { NgxSpinnerService } from "ngx-spinner";  
 //import * as Plotly from 'plotly.js';
 
 declare var Plotly: any;
+
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -10,10 +12,12 @@ declare var Plotly: any;
 })
 export class BodyComponent implements OnInit {
   
-  @ViewChild("Graph", { static: true })
+  @ViewChild("Graph", { static: false })
+  @Input()
   private Graph: ElementRef; 
  
   image;
+  ifSend = false;
   choice = {
     confirmes:'',
     contact:'',
@@ -43,7 +47,7 @@ export class BodyComponent implements OnInit {
 
 
 
-  constructor(private covid:CovidserviceService  ) { 
+  constructor(private covid:CovidserviceService,private SpinnerService: NgxSpinnerService  ) { 
     // this.image=localStorage.getItem('data')
     // console.log("a la body",this.image)
     // this.image = JSON.parse(this.image)
@@ -72,10 +76,15 @@ export class BodyComponent implements OnInit {
       dateFin:''
     };
 
-  }
 
+  }
+update(){
+  this.ngOnInit()
+  this.plotGraph()
+}
 
 get_choice(){
+  this.ifSend=true
     console.log("les choix",this.choice)
     console.log("les choix",this.date)
     this.url = {
@@ -84,18 +93,23 @@ get_choice(){
       option:this.choice
     }
     console.log("les choix",this.url)
+    this.SpinnerService.show();
     let plotData$= this.covid.get_graph_by_option(this.url).subscribe(response => {
       this.image = response.data
       console.log(response)
+      this.ifSend=false
       this.image = JSON.parse(response.data)
       // localStorage.setItem('data' ,JSON.stringify(response.data));
       this.plotGraph();
-      plotData$.unsubscribe();
+     // plotData$.unsubscribe();
+      this.SpinnerService.hide(); 
      
 
      // this.router.navigate(['./data'], { relativeTo: this.route })
       console.log('arive ou pas')
+
       this.showGraph=false
+      this.update()
 
     },
     error => {
@@ -103,9 +117,9 @@ get_choice(){
     })
 
   }
-  showvisualisation(){
-    this.showGraph = true
-  }
+  // showvisualisation(){
+  //   this.showGraph = true
+  // }
 
   plotGraph(){
     console.log("la fonction plot graphe",this.image)
