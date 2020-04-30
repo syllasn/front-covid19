@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {  HttpClientModule  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from "ngx-spinner"; 
+// import { NgxSpinnerModule } from "ngx-spinner"; 
 
 
 
@@ -29,7 +29,7 @@ import { CovidserviceService } from './covidservice.service';
     BrowserAnimationsModule,
  HttpClientModule ,
  FormsModule,
- NgxSpinnerModule
+//  NgxSpinnerModule
 
   ],
   providers: [CovidserviceService],

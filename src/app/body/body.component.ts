@@ -1,6 +1,6 @@
 import { Component,ViewChild,ElementRef, OnInit, Input } from '@angular/core';
 import { CovidserviceService } from '../covidservice.service';
-import { NgxSpinnerService } from "ngx-spinner";  
+// import { NgxSpinnerService } from "ngx-spinner";  
 //import * as Plotly from 'plotly.js';
 
 declare var Plotly: any;
@@ -47,7 +47,7 @@ export class BodyComponent implements OnInit {
 
 
 
-  constructor(private covid:CovidserviceService,private SpinnerService: NgxSpinnerService  ) { 
+  constructor(private covid:CovidserviceService  ) { 
     // this.image=localStorage.getItem('data')
     // console.log("a la body",this.image)
     // this.image = JSON.parse(this.image)
@@ -93,7 +93,7 @@ get_choice(){
       option:this.choice
     }
     console.log("les choix",this.url)
-    this.SpinnerService.show();
+    
     let plotData$= this.covid.get_graph_by_option(this.url).subscribe(response => {
       this.image = response.data
       console.log(response)
@@ -102,7 +102,7 @@ get_choice(){
       // localStorage.setItem('data' ,JSON.stringify(response.data));
       this.plotGraph();
      // plotData$.unsubscribe();
-      this.SpinnerService.hide(); 
+   
      
 
      // this.router.navigate(['./data'], { relativeTo: this.route })
