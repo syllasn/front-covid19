@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CovidserviceService {
- baseurl = 'http://localhost:5000';
-//baseurl = 'https://covid-19senegal.herokuapp.com/';
+ //baseurl = 'http://localhost:5000';
+baseurl = 'https://covid-19senegal.herokuapp.com/';
 httpHeaders = new HttpHeaders({'Content-Type': 'application/json'  });
 
   constructor(private http: HttpClient) { }
