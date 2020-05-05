@@ -27,7 +27,7 @@
     "@types/plotly.js": "^1.50.8",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-spinner": "^9.0.2",
     "path": "^0.12.7",
     "plotly.js": "^1.53.0",
